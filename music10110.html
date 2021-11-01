@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Music Player 10110</title>
+    <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap');
+*{
+  box-sizing: border-box;
+}
+
+body{
+  background: hsla(59, 100%, 50%, 1);
+
+  background: linear-gradient(180deg, hsla(59, 100%, 50%, 1) 10%, hsla(0, 7%, 19%, 1) 10%, hsla(0, 7%, 19%, 1) 49%, hsla(0, 7%, 19%, 1) 61%, hsla(0, 7%, 19%, 1) 71%, hsla(0, 7%, 19%, 1) 89%, hsla(59, 100%, 50%, 1) 89%);
+
+  background: -moz-linear-gradient(180deg, hsla(59, 100%, 50%, 1) 10%, hsla(0, 7%, 19%, 1) 10%, hsla(0, 7%, 19%, 1) 49%, hsla(0, 7%, 19%, 1) 61%, hsla(0, 7%, 19%, 1) 71%, hsla(0, 7%, 19%, 1) 89%, hsla(59, 100%, 50%, 1) 89%);
+
+  background: -webkit-linear-gradient(180deg, hsla(59, 100%, 50%, 1) 10%, hsla(0, 7%, 19%, 1) 10%, hsla(0, 7%, 19%, 1) 49%, hsla(0, 7%, 19%, 1) 61%, hsla(0, 7%, 19%, 1) 71%, hsla(0, 7%, 19%, 1) 89%, hsla(59, 100%, 50%, 1) 89%);
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFFB00", endColorstr="#342D2D", GradientType=1 );
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+
+
+h1{
+  font-family: 'Pacifico', cursive;
+  text-shadow:4px 4px 2px rgba(117,117,117, 0.8);
+  font-size: 54px;
+}
+
+
+
+.music-container{
+  background-color: #fff;
+  border-radius: 15px;
+  display: flex;
+  padding: 20px 30px;
+  position: relative;
+  margin: 100px 0px;
+  z-index: 10;
+}
+
+.img-container{
+  position: relative;
+  width: 110px;
+}
+
+.img-container::after{
+  content:  '';
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 100%;
+  left:50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%,+50%);
+}
+
+.img-container img{
+  border-radius: 50%;
+  object-fit: cover;
+  height: 110px;
+  width: inherit;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: rotate 3s linear infinite;
+  animation-play-state: paused;
+}
+
+.music-container.play  .img-container  img{
+  animation-play-state: running;
+}
+
+@keyframes  rotate {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+.navigation{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.action-btn{
+  background-color: #fff;
+  border: 0;
+  color: #dfdbdf;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0 20px;
+}
+
+.action-btn.action-btn-big{
+  color: 	#808080;
+  font-size: 30px;
+}
+.action-btn:focus{
+  color: #919191;
+outline: 0;
+}
+
+.music-info{
+  font-size: 16px;
+    background-color:#342D2D;
+    border-radius: 15px 15px 0 0 ;
+    position:absolute;
+    top: 0px;
+    left: 20px;
+    width: calc(100%-40px);
+    padding: 10px 10px 10px 150px;
+    opacity: 0;
+    transform: translateY(0%);
+    transition: transform  0.3s  ease-in ,opacity  0.3s  ease-in;
+    z-index: 0;
+}
+.music-container.play   .music-info{
+  opacity: 1;
+  transform: translateY(-100%);
+}
+
+.music-info h4{
+  margin: 0;
+}
+
+.progress-container{
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  height: 4px;
+   width: 100%;
+}
+
+.progress{
+  background-color: #FFD700;
+  border-radius: 5px;
+  height: 100%;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.playList{
+font-family: 'Baloo Da 2', cursive;
+  font-size: 14px;
+padding-left: -10px;
+color: 	#DCDCDC;
+}
+
+.playList span{
+font-size: 24px;
+color: #fff;
+}
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  </head>
+  <body>
+  
+      <h1>Music Player 10110</h1>
+      <h2 class="playList"><br><br><span>Play List</span><br><hr width="100%" color="yellow"><br>1. Shape of my heart  - Sting<br>2.Fly me to the moon - Nat king Cole Sings , George Shearing Plays<br>3.Empty note - Ghostly kisses <br></h2>
+
+      <div class="music-container " id="music-container">
+          <div class="music-info">
+              <h4 id="title"></h4>
+                  <div class="progress-container" id="progress-container">
+                      <div class="progress" id="progress">   </div>
+    </div>
+        <span id="currTime"></span>
+        <span >---------------------</span>
+        <span id="durTime"></span>
+      </div>
+      <audio  src="https://dl.lavamusic.ir/wp-content/uploads/2021/07/LP-Goodbye%20(128).mp3" id="audio" >  </audio>
+        <div class="img-container">
+          <img src="https://s18.picofile.com/file/8439234950/99_999438_way_to_zion_vinyl_shop.png" alt="music-cover" id="cover">
+        </div>
+        <div class="navigation">
+          <button id="prev" class="action-btn"><i class="fas  fa-backward"></i></button>
+          <button id="play" class="action-btn action-btn-big"><i class="fas  fa-play"></i></button>
+          <button id="next" class="action-btn"><i class="fas  fa-forward"></i></button>
+        </div>
+     </div>
+    <script>const musicContainer =document.getElementById('music-container');
+const playBtn =document.getElementById('play');
+const prevBtn =document.getElementById('prev');
+const nextBtn =document.getElementById('next');
+const audio =document.getElementById('audio');
+const progress =document.getElementById('progress');
+const progressContainer =document.getElementById('progress-container');
+const title =document.getElementById('title');
+const cover =document.getElementById('cover');
+const currTime=document.getElementById('currTime');
+const durTime =document.getElementById('durTime');
+
+const  songs =['https://s19.picofile.com/d/8439234350/1b010322-eb44-4e51-a19f-dfa720b4a377/fly_me_to_the_moon','https://dl.dlmusics.ir/Music/2019/Ghostly%20Kisses/Ghostly%20Kisses%20-%20Empty%20Note%20128','http://dl.resamusic.ir//%DB%B0%DB%B0/%DB%B1/Sting%20-%20Shape%20Of%20My%20Heart'];
+const images=['https://s19.picofile.com/file/8439234676/Fly_me_to_the_moon_Limited_Prints','https://s18.picofile.com/file/8439232192/shape_of_my_heart_sting'];
+
+let songIndex=2;
+loadSong(songs[songIndex]);
+
+
+function loadSong(song) {
+    audio.src=`${song}.mp3`;
+}
+
+function playSong() {
+  musicContainer.classList.add('play');
+  playBtn.querySelector('i.fas').classList.remove('fa-play');
+  playBtn.querySelector('i.fas').classList.add('fa-pause');
+  audio.play();
+}
+
+
+function pauseSong() {
+    musicContainer.classList.remove('play');
+    playBtn.querySelector('i.fas').classList.add('fa-play');
+    playBtn.querySelector('i.fas').classList.remove('fa-pause');
+    audio.pause();
+}
+
+
+function prevSong() {
+    songIndex--;
+    if (songIndex<0){
+        songIndex=songs.length-1;
+    }
+    loadSong(songs[songIndex]);
+    playSong();
+}
+
+function nextSong() {
+    songIndex++;
+    if (songIndex>songs.length-1){
+        songIndex=0;
+    }
+    loadSong(songs[songIndex]);
+    playSong();
+}
+
+function updateProgress(e) {
+    const {duration , currentTime }=e.srcElement;
+    const progressPercent=(currentTime/duration)*100;
+    progress.style.width=`${progressPercent}%`;
+}
+function setProgress(e) {
+    const width = this.clientWidth;
+    const clickX = e. offsetX;
+    const duration = audio.duration;
+    audio.currentTime=(clickX/width)*duration;
+}
+
+function DurTime(e) {
+    const {duration , currentTime }=e.srcElement;
+    var sec;
+    var sec_d;
+
+    let min=(currentTime==null) ? 0 : Math.floor(currentTime/60);
+    min = min<10 ?  '0' + min  : min;
+
+    let min_d = (duration == null) ? 0 : Math.floor(duration / 60);
+    min_d = min_d <10 ? '0' + min_d : min_d;
+
+
+    function get_sec(x) {
+        if (Math.floor(x) >= 60) {
+            sec = Math.round(x % 60);
+            sec = sec < 10 ? '0' + sec : sec;
+        } else {
+            sec = Math.floor(x);
+            sec = sec < 10 ? '0' + sec : sec;
+        }
+
+      }
+      get_sec(currentTime);
+      currTime.innerHTML = min + ':' + sec;
+
+      function get_sec_d(x) {
+          if (Math.floor(x) >= 60) {
+              sec_d = Math.round(x % 60);
+              sec_d= sec_d < 10 ? '0' + sec_d : sec_d;
+          } else {
+              sec_d = Math.floor(x);
+              sec_d = sec_d < 10 ? '0' + sec_d : sec_d;
+          }
+        }
+        get_sec_d(duration);
+        durTime.innerHTML = min_d + ':' + sec_d;
+
+}
+
+
+playBtn.addEventListener('click', ( )=>{
+    const  isPlaying =musicContainer.classList.contains('play');
+    if (isPlaying){
+        pauseSong();
+    }else {
+        playSong();
+    }
+});
+
+prevBtn.addEventListener('click',prevSong);
+nextBtn.addEventListener('click',nextSong);
+audio.addEventListener('timeupdate',updateProgress);
+progressContainer.addEventListener('click',setProgress);
+audio.addEventListener('ended',nextSong);
+audio.addEventListener('timeupdate',DurTime);
+
+
+    </script>
+  </body>
+</html>

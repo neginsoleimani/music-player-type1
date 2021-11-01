@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+background-color:#fefefe;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ font-family: 'Lato', sans-serif;
+  margin: 0;
+  color: #fff;
+  background-image: url('https://s18.picofile.com/file/8439996476/Screenshot_246_.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+
+
+@media screen and (max-width: 1100px) {
+  body {
+  background-image: url('https://s19.picofile.com/file/8440495326/finall.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  }
+}
+
+
+
+#img1{
+  width: 300px;
+  margin-bottom: -125px;
+  margin-left: 100px;
+
+}
+
+h1{
+font-family: 'Homemade Apple', cursive;
+  font-size: 54px;
+}
+
+
+
+.music-container{
+  background: hsla(0, 0%, 100%, 1);
+  background: linear-gradient(90deg, hsla(0, 0%, 100%, 1) 0%, hsla(187, 52%, 80%, 1) 100%);
+  background: -moz-linear-gradient(90deg, hsla(0, 0%, 100%, 1) 0%, hsla(187, 52%, 80%, 1) 100%);
+  background: -webkit-linear-gradient(90deg, hsla(0, 0%, 100%, 1) 0%, hsla(187, 52%, 80%, 1) 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFFFFF", endColorstr="#B0E0E6", GradientType=1 );
+  border-radius: 15px;
+  display: flex;
+  padding: 20px 30px;
+  position: relative;
+  margin: 100px 0px;
+  z-index: 10;
+}
+
+.img-container{
+  position: relative;
+  width: 110px;
+}
+
+.img-container img{
+  border-radius: 50%;
+  object-fit: cover;
+  height: 110px;
+  width: inherit;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: rotate 3s linear infinite;
+  animation-play-state: paused;
+}
+
+
+.img-container::after{
+  content:  '';
+  background-color: #B0E0E6;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 100%;
+  left:50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%,+50%);
+}
+
+.music-container.play  .img-container  img{
+  animation-play-state: running;
+}
+
+@keyframes  rotate {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+.navigation{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.action-btn{
+
+background: transparent;
+  border: 0;
+  color: #c4c3f6;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0 20px;
+}
+
+.action-btn.action-btn-big{
+  color:#a9a8f3;
+  font-size: 30px;
+}
+.action-btn:focus{
+  color: #6160eb;
+outline: 0;
+}
+
+.music-info{
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#b0e0e6+0,83ffec+100&1+0,0+100 */
+  background: -moz-linear-gradient(45deg,  rgba(176,224,230,1) 0%, rgba(131,255,236,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg,  rgba(176,224,230,1) 0%,rgba(131,255,236,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg,  rgba(176,224,230,1) 0%,rgba(131,255,236,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0e0e6', endColorstr='#0083ffec',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    font-size: 16px;
+    border-radius: 15px 15px 0 0 ;
+    position:absolute;
+    top: 0px;
+    left: 20px;
+    width: calc(100%-40px);
+    padding: 10px 10px 10px 150px;
+    opacity: 0;
+    transform: translateY(0%);
+    transition: transform  0.3s  ease-in ,opacity  0.3s  ease-in;
+    z-index: 0;
+    color:#fff;
+}
+.music-container.play   .music-info{
+  opacity: 1;
+  transform: translateY(-100%);
+}
+
+.music-info h4{
+  margin: 0;
+}
+
+.progress-container{
+  background-color:#fff;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  height: 4px;
+   width: 100%;
+}
+
+.progress{
+  background-color: #6160eb;
+  border-radius: 5px;
+  height: 100%;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.playList{
+font-family: 'Baloo Da 2', cursive;
+  font-size: 14px;
+padding-left: -10px;
+color: 	#DCDCDC;
+}
+
+.playList span{
+font-size: 24px;
+color: #fff;
+}
