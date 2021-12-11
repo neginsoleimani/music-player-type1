@@ -11,7 +11,7 @@ const currTime=document.getElementById('currTime');
 const durTime =document.getElementById('durTime');
 
 const  songs =['https://s19.picofile.com/d/8439234350/12ab782a-4dc7-416a-8c50-6b07a53cf7b2/fly_me_to_the_moon','https://dl.dlmusics.ir/Music/2019/Ghostly%20Kisses/Ghostly%20Kisses%20-%20Empty%20Note%20128','http://dl.resamusic.ir//%DB%B0%DB%B0/%DB%B1/Sting%20-%20Shape%20Of%20My%20Heart'];
-const images=['https://s19.picofile.com/file/8439234676/Fly_me_to_the_moon_Limited_Prints','https://s18.picofile.com/file/8439232192/shape_of_my_heart_sting'];
+const images=['https://rozup.ir/view/3442200/99-999438_way-to-zion-vinyl-shop.png','https://rozup.ir/view/3442200/99-999438_way-to-zion-vinyl-shop.png'];
 
 let songIndex=2;
 loadSong(songs[songIndex]);
